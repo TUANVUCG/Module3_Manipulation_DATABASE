@@ -87,7 +87,10 @@ SET ClassID = 2
 WHERE StudentName = 'Hung';
 
 -- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
+USE studentmng;
 SELECT S.StudentName, Sub.SubName, M.Mark
-FROM student S,subject Sub,mark M
-ORDER BY M.Mark DESC;
+FROM student S
+LEFT JOIN mark M ON S.StudentID = M.StudentID
+left JOIN Subject Sub ON M.SubID = Sub.SubID
+ORDER BY M.mark DESC, S.StudentName ASC;
 
